@@ -1,7 +1,6 @@
 import com.example.Feline;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -40,10 +39,7 @@ public class FelineTest {
     @Test
     public void eatMockTest() throws Exception {
         Feline feline = new Feline();
-        List<String> expectedResult = new ArrayList<>();
-        expectedResult.add("Животные");
-        expectedResult.add("Птицы");
-        expectedResult.add("Рыба");
+        List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
 
         List<String> actualResult = feline.eatMeat();
         assertEquals(expectedResult, actualResult);

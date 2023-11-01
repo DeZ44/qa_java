@@ -6,14 +6,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionMockTest {
-
+    String expectedResult;
     @Mock
     Feline feline;
 
@@ -30,13 +29,21 @@ public class LionMockTest {
     @Test
     public void getFoodMockTest() throws Exception {
         Lion lion = new Lion(feline);
-        List<String> expectedResult = new ArrayList<>();
-        expectedResult.add("Животные");
-        expectedResult.add("Птицы");
-        expectedResult.add("Рыба");
+        List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         Mockito.when(feline.getFood("Хищник")).thenReturn(expectedResult);
 
         List<String> actualResult = lion.getFood();
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void lionExceptionTest(){
+        try {
+            Lion lion = new Lion("Кот");
+        } catch (Exception exception) {
+            expectedResult = "Используйте допустимые значения пола животного - самец или самка";
+        }
+        String actualResult = "Используйте допустимые значения пола животного - самец или самка";
         assertEquals(expectedResult, actualResult);
     }
 }

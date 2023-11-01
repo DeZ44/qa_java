@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -20,10 +19,9 @@ public class CatGetFoodMockTest {
 
 
     @Test
-    public void getFoodMockTest2() throws Exception {
+    public void getFoodMockTest() throws Exception {
         Cat cat = new Cat(feline);
-        List<String> expectedResult = new ArrayList<>();
-        expectedResult.add("Хищник");
+        List<String> expectedResult = List.of("Хищник");
         Mockito.when(feline.eatMeat()).thenReturn(expectedResult);
 
         List<String> actualResult = cat.getFood();
