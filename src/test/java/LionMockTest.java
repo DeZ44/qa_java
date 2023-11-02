@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionMockTest {
-    String expectedResult;
+
     @Mock
     Feline feline;
 
@@ -36,14 +36,8 @@ public class LionMockTest {
         assertEquals(expectedResult, actualResult);
     }
 
-    @Test
-    public void lionExceptionTest(){
-        try {
+    @Test(expected = Exception.class)
+    public void lionExceptionTest() throws Exception {
             Lion lion = new Lion("Кот");
-        } catch (Exception exception) {
-            expectedResult = "Используйте допустимые значения пола животного - самец или самка";
-        }
-        String actualResult = "Используйте допустимые значения пола животного - самец или самка";
-        assertEquals(expectedResult, actualResult);
     }
 }
